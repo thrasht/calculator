@@ -4,7 +4,7 @@ pipeline {
         pollSCM('* * * * *')
      }
      stages {
-          stage("Static code analysis") {
+          stage("Static Code Analysis") {
             steps {
                 sh "./gradlew checkstyleMain"
                 publishHTML (target: [reportDir: 'build/reports/checkstyle',
