@@ -4,6 +4,16 @@ pipeline {
         pollSCM('* * * * *')
      }
      stages {
+          stage("Package") {
+            steps {
+                sh "./gradlew build"
+            }
+          }
+          stage("Docker build") {
+            steps {
+                sh "docker build -t edthrasht/calculator"
+            }
+          }
           stage("Static Code Analysis") {
             steps {
                 sh "./gradlew checkstyleMain"
